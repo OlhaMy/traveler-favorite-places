@@ -1,15 +1,21 @@
 <script setup>
-import { defineProps } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
-  default: 'primary',
-  type: String,
-  validator: (value) => {
-    return ['primary', 'gradient', 'outlined'].includes(value)
+  variant: {
+    type: String,
+    default: 'primary',
+    validator: (value) => {
+      return ['primary', 'gradient', 'outlined'].includes(value)
+    },
   },
 })
-const bgStyles =
-  props.variant === 'gradient' ? 'bg-gradient-to-r from-[#ffa279] to-[#f3743d]' : 'bg-[#ffa279]'
+
+const bgStyles = computed(() => {
+  return props.variant === 'gradient'
+    ? 'bg-gradient-to-r from-[#FFA279] to-[#F3743D]'
+    : 'bg-[#FFA279]'
+})
 </script>
 
 <template>
