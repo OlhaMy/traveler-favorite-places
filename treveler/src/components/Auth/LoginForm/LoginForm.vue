@@ -1,22 +1,26 @@
 <script setup>
-import { reactive, toRaw } from 'vue'
+import { reactive, watch } from 'vue'
 import IInput from '../../IInput/IInput.vue'
-import IButton from '../../IButton/IButton.vue'
 import FormContainer from '../FormContainer.vue'
-
+import IButton from '../../IButton/IButton.vue'
 const emit = defineEmits(['submit'])
 const userData = reactive({
-  name: '',
   email: '',
   password: '',
 })
+watch(
+  userData,
+  () => {
+    console.log('user data changed')
+  },
+  { immediate: true },
+)
 </script>
 <template>
   <FormContainer
     @submit.prevent="emit('submit', toRaw(userData))"
     class="max-w-[500px] w-full bg-white p-10 rounded-2xl"
   >
-    <IInput class="mb-4" label="Повне імʼя" v-model="userData.name" />
     <IInput
       class="mb-4"
       label="Електронна пошта"
@@ -30,6 +34,6 @@ const userData = reactive({
       @focus="() => console.log('focused')"
       v-model="userData.password"
     />
-    <IButton class="mt-10 w-full" variant="gradient" type="submit">Створити аккаунт</IButton>
+    <IButton class="mt-10 w-full" variant="gradient" type="submit">Увійти</IButton>
   </FormContainer>
 </template>
