@@ -8,13 +8,6 @@ const userData = reactive({
   email: '',
   password: '',
 })
-watch(
-  userData,
-  () => {
-    console.log('user data changed')
-  },
-  { immediate: true },
-)
 </script>
 <template>
   <FormContainer
