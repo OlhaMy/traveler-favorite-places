@@ -2,12 +2,14 @@
 import { ref } from 'vue'
 
 const props = defineProps({
+  modelValue: String,
   label: String,
   placeholder: String,
   type: { default: 'text', type: String },
 })
 
 defineOptions({ inheritAttrs: false })
+const emit = defineEmits(['update:modelValue'])
 
 const text = ref('')
 
@@ -18,13 +20,14 @@ const changeValue = (event) => {
 
 <template>
   <div class="w-full text-[#2c2c2c]">
-    <lable class="block">
+    <label class="block">
       <span class="block text-xs px-3 mb-2">{{ props.label }}</span>
       <input
         class="w-full text-sm rounded-[4px] border-[#eaeaea] border-[1px] py-2 px3 focus:outline-primary"
         v-bind="{ ...$props, ...$attrs }"
-        @input="changeValue"
+        :value="modelValue"
+        @input="emit('update:modelValue', $event.target.value)"
       />
-    </lable>
+    </label>
   </div>
 </template>

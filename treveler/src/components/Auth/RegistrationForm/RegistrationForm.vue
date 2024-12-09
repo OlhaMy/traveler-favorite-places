@@ -1,17 +1,34 @@
 <script setup>
+import { reactive, toRaw } from 'vue'
 import IInput from '../../IInput/IInput.vue'
 import IButton from '../../IButton/IButton.vue'
 
 const emit = defineEmits(['submit'])
+const userData = reactive({
+  name: '',
+  email: '',
+  password: '',
+})
 </script>
 <template>
   <form
-    @submit.prevent="emit('submit', { name: 'name' })"
+    @submit.prevent="emit('submit', toRaw(userData))"
     class="max-w-[500px] w-full bg-white p-10 rounded-2xl"
   >
-    <IInput class="mb-4" label="Повне імʼя" />
-    <IInput class="mb-4" label="Електронна пошта" placeholder="email@gmail.com" />
-    <IInput class="mb-4" label="Пароль" type="password" @focus="() => console.log('focused')" />
+    <IInput class="mb-4" label="Повне імʼя" v-model="userData.name" />
+    <IInput
+      class="mb-4"
+      label="Електронна пошта"
+      placeholder="email@gmail.com"
+      v-model="userData.email"
+    />
+    <IInput
+      class="mb-4"
+      label="Пароль"
+      type="password"
+      @focus="() => console.log('focused')"
+      v-model="userData.password"
+    />
     <IButton class="mt-10 w-full" variant="gradient" type="submit">Створити аккаунт</IButton>
   </form>
 </template>
