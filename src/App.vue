@@ -1,14 +1,32 @@
 <script setup>
-import { MapboxMap } from '@studiometa/vue-mapbox-gl'
+import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import FavoritePlacesVue from './components/FavoritePlaces/FavoritePlaces.vue'
 import { mapSettings } from './map/settings.js'
+import MarkerIcon from './components/icons/MarkerIcon.vue'
+
+const favoritePlaces = [
+  {
+    id: 1,
+    title: 'new place 1',
+    description: 'super description 1',
+    img: '',
+    lngLat: [30.523333, 50.490001]
+  },
+  {
+    id: 2,
+    title: 'new place 2',
+    description: 'super description 2',
+    img: '',
+    lngLat: [30.523333, 50.450001]
+  }
+]
 </script>
 
 <template>
   <main class="flex h-screen">
     <div class="bg-white h-screen w-[400px] shrink-0 overflow-auto pb-10">
-      <FavoritePlacesVue />
+      <FavoritePlacesVue :items="favoritePlaces" />
     </div>
     <div class="w-full h-full flex items-center justify-center text-6xl">
       <MapboxMap
@@ -17,7 +35,11 @@ import { mapSettings } from './map/settings.js'
         :zoom="10"
         :access-token="mapSettings.apiToken"
         :map-style="mapSettings.style"
-      ></MapboxMap>
+      >
+        <MapboxMarker v-for="place in favoritePlaces" :key="place.id" :lngLat="place.lngLat">
+          <MarkerIcon class="h-8 w-8" />
+        </MapboxMarker>
+      </MapboxMap>
     </div>
   </main>
 </template>
