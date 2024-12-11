@@ -5,6 +5,7 @@ import LoginForm from '../components/Auth/LoginForm/LoginForm.vue'
 import { login } from '../api/user'
 
 const isLoading = ref(false)
+const error = ref(null)
 const router = useRouter()
 
 const handleLogin = async (userData) => {

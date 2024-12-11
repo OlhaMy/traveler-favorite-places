@@ -19,15 +19,14 @@ const userData = reactive({
 
 <template>
   <form @submit.prevent="emit('submit', toRaw(userData))">
-    <IInput class="mb-4" label="Повне ім’я" v-model="userData.name" autocomplete="name" />
+    <IInput class="mb-4" label="Повне ім’я" v-model="userData.name" />
     <IInput
       class="mb-4"
       label="Електронна пошта"
       placeholder="email@gmail.com"
       v-model="userData.email"
-      autocomplete="email"
     />
-    <IInput label="Пароль" type="password" v-model="userData.password" autocomplete="password" />
+    <IInput label="Пароль" type="password" v-model="userData.password" />
     <IButton class="mt-10 w-full" variant="gradient" type="submit" :is-loading="props.isLoading">
       Створити аккаунт
     </IButton>

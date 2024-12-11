@@ -8,10 +8,6 @@ const props = defineProps({
   type: {
     default: 'text',
     type: String
-  },
-  autocomplete: {
-    type: String,
-    default: 'off'
   }
 })
 
@@ -41,7 +37,6 @@ const componentName = computed(() => {
         :is="componentName"
         rows="3"
         :class="inputStyles"
-        :autocomplete="props.autocomplete"
         v-bind="{ ...$props, ...$attrs }"
         :value="modelValue"
         @input="emit('update:modelValue', $event.target.value)"
