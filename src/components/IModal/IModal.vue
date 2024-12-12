@@ -23,8 +23,8 @@ onUnmounted(() => {
         <button class="absolute right-3 top-3">
           <CrossIcon class="w-6 h-6" @click="emit('close')" />
         </button>
-
         <slot></slot>
-      </div></div
-  ></component>
+      </div>
+    </div>
+  </component>
 </template>
