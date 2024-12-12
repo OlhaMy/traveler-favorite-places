@@ -1,7 +1,8 @@
 <script setup>
+import { defineEmits } from 'vue'
+
 import IButton from '../IButton/IButton.vue'
 import IModal from '../IModal/IModal.vue'
-import { defineEmits } from 'vue'
 
 defineProps({
   title: {
