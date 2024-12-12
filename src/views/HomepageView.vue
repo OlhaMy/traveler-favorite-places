@@ -11,7 +11,6 @@ import FavoritePlaces from '../components/FavoritePlaces/FavoritePlaces.vue'
 import MarkerIcon from '../components/icons/MarkerIcon.vue'
 import UserInfo from '../components/UserInfo/UserInfo.vue'
 import LogoutButton from '../components/LogoutButton/LogoutButton.vue'
-import CreateNewPlaceModal from '../components/CreateNewPlaceModal/createNewPlaceModal.vue'
 
 const activeId = ref(null)
 const map = ref(null)
