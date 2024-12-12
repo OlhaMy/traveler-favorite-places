@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+
 import UploadIcon from './UploadIcon.vue'
 
 const emit = defineEmits(['uploaded'])

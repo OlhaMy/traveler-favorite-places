@@ -4,7 +4,7 @@ import IInput from '../IInput/IInput.vue'
 import IModal from '../IModal/IModal.vue'
 import InputImage from '../InputImage/InputImage.vue'
 import MarkerIcon from '../icons/MarkerIcon.vue'
-import fallbackImage from '../../assets/img/ukraine.png'
+import fallbackImage from '../../assets/img/world.png'
 import { ref, watch } from 'vue'
 
 const props = defineProps({
@@ -54,7 +54,7 @@ const handleChangeImg = (url) => {
         <div class="flex gap-5">
           <div class="w-5/12">
             <img
-              class="w-full h-[276px] object-cover rounded-md"
+              class="w-full h-[279px] object-cover rounded-md"
               :src="formData.img || fallbackImage"
               alt="place img"
             />
