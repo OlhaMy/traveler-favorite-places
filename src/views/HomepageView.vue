@@ -2,14 +2,13 @@
 import { computed, onMounted, ref } from 'vue'
 import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-
+import CreateNewPlaceModal from '../components/CreateNewPlaceModal/CreateNewPlaceModal.vue'
 import { mapSettings } from '../map/settings'
 import { addFavoritePlace, getFavoritePlaces } from '../api/favorite-places'
-import { useModal } from '../composables/useModal'
 import { useMutation } from '../composables/useMutation'
-import FavoritePlaces from '../components/FavoritePlaces/FavoritePlaces.vue'
+import { useModal } from '../composables/useModal'
 import MarkerIcon from '../components/icons/MarkerIcon.vue'
-import CreateNewPlaceModal from '../components/CreateNewPlaceModal/CreateNewPlaceModal.vue'
+import FavoritePlaces from '../components/FavoritePlaces/FavoritePlaces.vue'
 import UserInfo from '../components/UserInfo/UserInfo.vue'
 import LogoutButton from '../components/LogoutButton/LogoutButton.vue'
 

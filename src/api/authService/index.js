@@ -45,7 +45,7 @@ class AuthService {
   }
 
   async refresh() {
-    const { data } = await clientFetch.get('/user/refresh')
+    const { data } = await clientFetch.post('/user/refresh')
     const { accessToken } = data
 
     this.setToken(accessToken)

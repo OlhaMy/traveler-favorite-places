@@ -54,7 +54,7 @@ const handleChangeImg = (url) => {
         <div class="flex gap-5">
           <div class="w-5/12">
             <img
-              class="w-full h-[279px] object-cover rounded-md"
+              class="w-full h-[276px] object-cover rounded-md"
               :src="formData.img || fallbackImage"
               alt="place img"
             />
