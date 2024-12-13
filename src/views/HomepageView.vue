@@ -2,7 +2,8 @@
 import { computed, onMounted, ref } from 'vue'
 import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import CreateNewPlaceModal from '@/components/CreateNewPlaceModal/CreateNewPlaceModal.vue'
+import CreateNewPlaceModal from '../components/CreateNewPlaceModal/CreateNewPlaceModal.vue'
+
 import { mapSettings } from '../map/settings'
 import { addFavoritePlace, getFavoritePlaces } from '../api/favorite-places'
 import { useMutation } from '../composables/useMutation'
