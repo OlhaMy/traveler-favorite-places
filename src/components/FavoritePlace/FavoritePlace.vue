@@ -1,10 +1,9 @@
 <script setup>
-import { defineEmits } from 'vue'
-
 import FavoritePlaceIconButton from './FavoritePlaceIconButton.vue'
 import DeleteIcon from './DeleteIcon.vue'
 import EditIcon from './EditIcon.vue'
-import fallbackImage from '../../assets/img/world.png'
+import { defineEmits } from 'vue'
+import fallbackImage from '../../assets/img/ukraine.png'
 
 const props = defineProps({
   title: {

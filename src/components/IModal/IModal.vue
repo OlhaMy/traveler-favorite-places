@@ -1,31 +1,46 @@
 <script setup>
-import { onMounted, onUnmounted, Teleport } from 'vue'
+import { computed } from 'vue'
 
-import CrossIcon from '../icons/CrossIcon.vue'
-
-const emit = defineEmits(['close'])
-
-onMounted(() => {
-  document.body.style.overflow = 'hidden'
+const props = defineProps({
+  modelValue: String,
+  label: String,
+  placeholder: String,
+  type: {
+    default: 'text',
+    type: String
+  }
 })
 
-onUnmounted(() => {
-  document.body.style.overflow = 'initial'
+defineOptions({
+  inheritAttrs: false
+})
+
+const emit = defineEmits(['update:modelValue'])
+const baseStyles =
+  'w-full text-sm rounded-[4px] border-[#eaeaea] border-[1px] py-2 px-3 focus:outline-primary'
+const isTextarea = computed(() => {
+  return props.type === 'textarea'
+})
+const inputStyles = computed(() => {
+  return isTextarea.value ? baseStyles + ' resize-none' : baseStyles
+})
+const componentName = computed(() => {
+  return isTextarea.value ? 'textarea' : 'input'
 })
 </script>
 
 <template>
-  <component :is="Teleport" to="body">
-    <div
-      class="flex w-full h-full fixed top-0 left-0 overflow-auto bg-[rgba(0,0,0,0.3)]"
-      @click.self="emit('close')"
-    >
-      <div class="relative bg-white min-w-[350px] m-auto text-black rounded-2xl p-10">
-        <button class="absolute right-3 top-3">
-          <CrossIcon class="w-6 h-6" @click="emit('close')" />
-        </button>
-        <slot></slot>
-      </div>
-    </div>
-  </component>
+  <div class="w-full text-[#2C2C2C]">
+    <label class="block">
+      <span class="block text-xs px-3 mb-2">{{ props.label }}</span>
+      <component
+        :is="componentName"
+        rows="3"
+        :class="inputStyles"
+        v-bind="{ ...$props, ...$attrs }"
+        :value="modelValue"
+        @input="emit('update:modelValue', $event.target.value)"
+      />
+    </label>
+  </div>
 </template>
