@@ -3,7 +3,7 @@ import { onMounted } from 'vue'
 
 import UserIcon from './UserIcon.vue'
 import { useMutation } from '../../composables/useMutation'
-import { getUserInfo } from '../../api/user'
+import { getUserInfo } from '../../api/user/index.js'
 
 const {
   data: userInfo,
